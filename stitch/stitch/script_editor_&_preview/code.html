@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Script Editor &amp; Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#863eea",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#181121",
+                        "editor-bg": "#1e1629",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="flex items-center bg-white/5 dark:bg-primary/5 backdrop-blur-md sticky top-0 z-40 p-4 border-b border-slate-200 dark:border-primary/20 justify-between">
+<div class="flex items-center gap-3">
+<button class="text-slate-600 dark:text-slate-300 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">script.rpy</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Ren'Py Visual Novel Project</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 items-center justify-center px-4 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                    Save
+                </button>
+</div>
+</div>
+<!-- File Tabs -->
+<div class="bg-white/2 dark:bg-background-dark/50">
+<div class="flex border-b border-slate-200 dark:border-primary/10 px-4 gap-6 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4 whitespace-nowrap" href="#">
+<p class="text-sm font-bold tracking-tight">script.rpy</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<p class="text-sm font-medium tracking-tight">options.rpy</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<p class="text-sm font-medium tracking-tight">screens.rpy</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<p class="text-sm font-medium tracking-tight">gui.rpy</p>
+</a>
+</div>
+</div>
+<!-- Editor Content -->
+<div class="flex-1 p-4 bg-background-light dark:bg-background-dark font-mono text-sm leading-relaxed overflow-y-auto">
+<div class="rounded-xl bg-slate-100 dark:bg-editor-bg p-4 border border-slate-200 dark:border-primary/10 shadow-inner">
+<div class="flex gap-4">
+<div class="flex flex-col text-slate-400 dark:text-slate-600 text-right select-none min-w-[24px]">
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+<span>10</span>
+<span>11</span>
+<span>12</span>
+</div>
+<div class="flex-1">
+<p><span class="text-emerald-600 dark:text-emerald-400"># Ren'Py Script Start</span></p>
+<p><span class="text-primary">label</span> <span class="text-amber-500">start</span>:</p>
+<p class="pl-4">"<span class="text-sky-500">Welcome to the development cycle.</span>"</p>
+<p class="pl-4"><span class="text-primary">$</span> player_name = <span class="text-sky-500">"Dev"</span></p>
+<p class="pl-4"><span class="text-primary">show</span> eileen happy</p>
+<p class="pl-4">e <span class="text-sky-500">"You are now editing in the cloud with Supabase storage."</span></p>
+<p class="pl-4"><span class="text-primary">menu</span>:</p>
+<p class="pl-8">"<span class="text-sky-500">Check Assets</span>":</p>
+<p class="pl-12"><span class="text-primary">jump</span> assets_list</p>
+<p class="pl-8">"<span class="text-sky-500">Continue Coding</span>":</p>
+<p class="pl-12"><span class="text-primary">pass</span></p>
+<p class="pl-4"><span class="text-primary">return</span></p>
+</div>
+</div>
+</div>
+<!-- Quick Action Floating Bar -->
+<div class="mt-4 flex gap-2 overflow-x-auto pb-4 no-scrollbar">
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">label</button>
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">show</button>
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">hide</button>
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">jump</button>
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">menu</button>
+<button class="bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-xs font-bold border border-primary/20 whitespace-nowrap">scene</button>
+</div>
+</div>
+<!-- Sidebar Overlay (Hidden by default, used for quick file switching) -->
+<div class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm transition-opacity pointer-events-none opacity-0">
+<div class="flex h-full w-4/5 flex-col bg-white dark:bg-background-dark p-6 shadow-2xl">
+<div class="mb-8 flex items-center justify-between">
+<h3 class="text-xl font-bold">Project Files</h3>
+<span class="material-symbols-outlined text-slate-400">close</span>
+</div>
+<ul class="flex flex-col gap-2">
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 bg-primary/10 text-primary">
+<span class="material-symbols-outlined">description</span>
+<p class="text-base font-bold truncate">Scripts</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">image</span>
+<p class="text-base font-medium truncate">Images</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">music_note</span>
+<p class="text-base font-medium truncate">Audio</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">cloud_sync</span>
+<p class="text-base font-medium truncate">Supabase Sync</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 text-slate-600 dark:text-slate-300 mt-auto">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-base font-medium truncate">Project Settings</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-primary/20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-lg px-4 pb-8 pt-3 sticky bottom-0">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<p class="text-[10px] font-bold leading-normal tracking-wide">Editor</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Assets</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">database</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Storage</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Preview</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Build</p>
+</a>
+</div>
+</div>
+</body></html>
