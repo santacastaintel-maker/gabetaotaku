@@ -1,3 +1,4 @@
+"use client";
 import { FileCard } from "@/components/FileCard";
 import { Navbar } from "@/components/Navbar";
 import { useEffect, useState } from "react";
